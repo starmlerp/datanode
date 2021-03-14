@@ -2,13 +2,14 @@
 #define _DATANODE_H_
 #include <string>
 
+
 namespace adn{
 	class datanode{
 		private:
 		size_t nsize=0;
-		datanode* child=nullptr; //store the children instances
+		char* vname;
+		void* content;
 		public:
-		std::string line;//the component defining the node,
 		datanode(size_t _nsize = 0);
 		~datanode();
 		size_t size(); //get the number of children to this node
