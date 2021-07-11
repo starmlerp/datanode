@@ -1,27 +1,25 @@
 #include "datanode.h"
-namespace adn{
-	datanode::datanode(size_t _nsize)
+	adn::datanode::datanode(size_t _nsize)
 	{
 		nsize = _nsize;
-	        if(nsize)child = new datanode[nsize];
+	        if(nsize)content = new adn::datanode[nsize];
 	}
-	datanode::~datanode(){
-		delete child;
+	adn::datanode::~datanode(){
+		delete content;
 	}
-	size_t datanode::size(){
+	size_t adn::datanode::size(){
 		return nsize;
 	}
-	datanode* datanode::append(){
+	adn::datanode* adn::datanode::append(){
 		nsize++;
-		datanode* holder = new datanode[nsize];
-		delete child;
-		child = holder;
-		return (datanode*)(child+nsize-1);
+		adn::datanode* holder = new datanode[nsize];
+		delete content;
+		content = holder;
+		return (adn::datanode*)(content+nsize-1);
 	}
-	datanode* datanode::getElement(size_t num){
+	adn::datanode* adn::datanode::getElement(size_t num){
 		if(num < nsize){
-			return (datanode*)(child + num);
+			return (adn::datanode*)(content + num);
 		}
 		return nullptr;
 	}
-}
